@@ -1,11 +1,11 @@
 import "./App.css";
-import InteractiveElementSelection from "./components/InteractiveElementSelection";
 import {
   IconBeer,
   IconCocktail,
   IconReact,
   IconWine,
-} from "./components/icons";
+} from "./components/Icons";
+import InteractiveElementSelection from "./components/InteractiveElementSelection";
 
 function App() {
   return (
