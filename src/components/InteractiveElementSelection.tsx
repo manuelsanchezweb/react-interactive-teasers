@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { animate, stagger } from "motion";
+import { useEffect, useState } from "react";
 
 type OptionProps = {
   id: number;
@@ -21,14 +22,6 @@ type DataProps = {
 
 export default function InteractiveElementSelection({ data }: DataProps) {
   const [selectedOption, setSelectedOption] = useState({} as OptionProps);
-  // Modal Options
-  //   const [modalOpen, setModalOpen] = useState(false);
-  //   const handleOpenModal = (option: OptionProps) => {
-  //     setSelectedOption(option);
-  //     setModalOpen(true);
-  //   };
-
-  // Replace Option
   const [viewSelected, setViewSelected] = useState(false);
 
   const handleOptionSelection = (option: OptionProps) => {
@@ -36,12 +29,25 @@ export default function InteractiveElementSelection({ data }: DataProps) {
     setViewSelected(true);
   };
 
+  useEffect(() => {
+    const allButtons = document.querySelectorAll("button");
+    if (!allButtons) return;
+
+    animate(
+      allButtons,
+      { opacity: [0, 1], scale: [0, 1] },
+      { delay: stagger(0.1), easing: "ease-in-out" }
+    );
+  });
+
   return (
-    <div className="flex justify-between items-center my-20 min-h-[20vh]">
+    <div className="flex flex-col md:flex-row justify-between items-center my-20 gap-6 min-h-[20vh]">
       {!viewSelected ? (
         <>
-          <h2 className="text-4xl mb-4">{data.headline}</h2>
-          <div className="flex gap-6">
+          <h2 className="text-3xl md:text-5xl max-w-[500px] mb-4 text-center md:text-left">
+            {data.headline}
+          </h2>
+          <div className="flex flex-wrap gap-6">
             {data.options.map((option) => (
               <button
                 key={option.id}
@@ -55,9 +61,9 @@ export default function InteractiveElementSelection({ data }: DataProps) {
           </div>
         </>
       ) : (
-        <div className="flex flex-col items-center justify-center max-w-[900px] mx-auto text-center relative p-6">
+        <div className="flex flex-col items-center justify-center max-w-[900px] mx-auto text-center relative p-12 lg:p-6">
           <button
-            className="absolute right-2 top-0"
+            className="bg-[var(--color-light)] p-4 w-[20px] h-[20px] flex items-center justify-center rounded-full absolute right-2 top-0"
             onClick={() => setViewSelected(false)}
           >
             x
@@ -77,30 +83,5 @@ export default function InteractiveElementSelection({ data }: DataProps) {
         </div>
       )}
     </div>
-    // Option Modal
-    // <div className="flex justify-between items-center my-20">
-    //   <div className="text-6xl max-w-[600px]">{data.headline}</div>
-    //   <div className="flex gap-6">
-    //     {data.options.map((option) => (
-    //       <button
-    //         key={option.id}
-    //         // onClick={() => handleOpenModal(option)}
-    //         onClick={() => handleOptionSelection(option)}
-    //         className="bg-[var(--color-light)] rounded-3xl flex flex-col items-center justify-center min-w-[175px] min-h-[175px] gap-4 hover:bg-[var(--color-secondary)] focus:bg-[var(--color-secondary)]"
-    //       >
-    //         <option.icon />
-    //         <div>{option.label}</div>
-    //       </button>
-    //     ))}
-    //     {/* // Modal Option  */}
-    //     {/* <Modal
-    //       open={modalOpen}
-    //       title={selectedOption?.title}
-    //       onClose={() => setModalOpen(false)}
-    //     >
-    //       <p>{selectedOption?.description}</p>
-    //     </Modal> */}
-    //   </div>
-    // </div>
   );
 }
