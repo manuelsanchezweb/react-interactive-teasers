@@ -41,7 +41,7 @@ export default function InteractiveElementSelection({ data }: DataProps) {
   });
 
   return (
-    <div className="flex flex-col md:flex-row justify-between items-center my-20 gap-6 min-h-[20vh]">
+    <div className="flex flex-col md:flex-row justify-between items-center my-20 gap-6 min-h-[20vh] md:min-h-[50vh]">
       {!viewSelected ? (
         <>
           <h2 className="text-3xl md:text-5xl max-w-[500px] mb-4 text-center md:text-left">
