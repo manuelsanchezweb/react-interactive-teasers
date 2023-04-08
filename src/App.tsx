@@ -5,11 +5,12 @@ import {
   IconReact,
   IconWine,
 } from "./components/Icons";
+import InteractiveElementLineal from "./components/InteractiveElementLineal";
 import InteractiveElementSelection from "./components/InteractiveElementSelection";
 
 function App() {
   return (
-    <div className="App">
+    <main className="App mb-24">
       <section className="flex md:min-h-[40vh] w-full bg-[var(--color-primary)]">
         <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-[var(--max-width)] mx-auto text-white p-4">
           <h1 className="text-6xl leading-[5rem] font-bold text-center md:text-left max-w-[800px]">
@@ -67,8 +68,72 @@ function App() {
             ],
           }}
         />
+        <InteractiveElementSelection
+          data={{
+            headline: "What kind of drinker are you?",
+            options: [
+              {
+                id: 1,
+                icon: IconCocktail,
+                label: "A cocktailer",
+                title: "Cocktailers Create World Peace with One Sip at a Time",
+                description:
+                  "Did you know that cocktail enthusiasts, or 'cocktailers,' have a harmonious outlook on life? Through their pursuit of the perfect mix, they bring people together with delightful concoctions, fostering bonds between friends and strangers alike.",
+                cta: {
+                  label: "Learn more",
+                  url: "https://www.google.com",
+                },
+              },
+              {
+                id: 2,
+                icon: IconBeer,
+                label: "A beerer",
+                title:
+                  "Beerers Unite: Craft Beer Lovers Showcase International Hops Harmony",
+                description:
+                  "Did you know that beer aficionados, known as 'beerers,' share a common passion that transcends borders and cultures? These hop-savvy enthusiasts are building connections worldwide by exchanging and exploring unique craft brews from around the globe",
+                cta: {
+                  label: "Learn more",
+                  url: "https://www.google.com",
+                },
+              },
+            ],
+          }}
+        />
+        <InteractiveElementLineal
+          data={{
+            headline: "What kind of drinker are you?",
+            options: [
+              {
+                id: 1,
+                icon: IconCocktail,
+                label: "A cocktailer",
+                title: "Cocktailers Create World Peace with One Sip at a Time",
+                description:
+                  "Did you know that cocktail enthusiasts, or 'cocktailers,' have a harmonious outlook on life? Through their pursuit of the perfect mix, they bring people together with delightful concoctions, fostering bonds between friends and strangers alike.",
+                cta: {
+                  label: "Learn more",
+                  url: "https://www.google.com",
+                },
+              },
+              {
+                id: 2,
+                icon: IconBeer,
+                label: "A beerer",
+                title:
+                  "Beerers Unite: Craft Beer Lovers Showcase International Hops Harmony",
+                description:
+                  "Did you know that beer aficionados, known as 'beerers,' share a common passion that transcends borders and cultures? These hop-savvy enthusiasts are building connections worldwide by exchanging and exploring unique craft brews from around the globe",
+                cta: {
+                  label: "Learn more",
+                  url: "https://www.google.com",
+                },
+              },
+            ],
+          }}
+        />
       </section>
-    </div>
+    </main>
   );
 }
 

@@ -30,7 +30,7 @@ export default function InteractiveElementSelection({ data }: DataProps) {
   };
 
   useEffect(() => {
-    const allButtons = document.querySelectorAll("button");
+    const allButtons = document.querySelectorAll(".animated");
     if (!allButtons) return;
 
     animate(
@@ -38,21 +38,21 @@ export default function InteractiveElementSelection({ data }: DataProps) {
       { opacity: [0, 1], scale: [0, 1] },
       { delay: stagger(0.1), easing: "ease-in-out" }
     );
-  });
+  }, []);
 
   return (
-    <div className="flex flex-col md:flex-row justify-between items-center my-20 gap-6 min-h-[20vh] md:min-h-[50vh]">
+    <div className="flex flex-col md:flex-row justify-between items-center gap-6 my-12 md:my-2 min-h-[20vh] md:min-h-[35vh]">
       {!viewSelected ? (
         <>
           <h2 className="text-3xl md:text-5xl max-w-[500px] mb-4 text-center md:text-left">
             {data.headline}
           </h2>
-          <div className="flex flex-wrap gap-6">
+          <div className="flex flex-wrap justify-center gap-6">
             {data.options.map((option) => (
               <button
                 key={option.id}
                 onClick={() => handleOptionSelection(option)}
-                className="bg-[var(--color-light)] rounded-3xl flex flex-col items-center justify-center min-w-[175px] min-h-[175px] gap-4 hover:bg-[var(--color-secondary)] focus:bg-[var(--color-secondary)]"
+                className="animated bg-[var(--color-light)] rounded-3xl flex flex-col items-center justify-center min-w-[175px] min-h-[175px] gap-4 hover:bg-[var(--color-secondary)] focus:bg-[var(--color-secondary)]"
               >
                 <option.icon />
                 <div>{option.label}</div>
