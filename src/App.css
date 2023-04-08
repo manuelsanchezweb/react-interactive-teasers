@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #003050;
+  --color-secondary: #a9f6f6;
+  --color-light: #ebebeb;
+
+  --max-width: 1440px;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: var(--color-primary);
+}
